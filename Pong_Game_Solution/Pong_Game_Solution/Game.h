@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "SDL.h"
+#include "SDL_image.h"
 
 #define LOG(message) std::cout << message << std::endl;
 
