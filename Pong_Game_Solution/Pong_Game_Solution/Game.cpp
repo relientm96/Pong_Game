@@ -1,8 +1,8 @@
 #include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Game.h>
 #include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\TextureManager.h>
+#include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\GameObject.h"
 
-SDL_Texture* ballTex;
-SDL_Rect srcR, destR;
+GameObject* ball;
 
 Game::Game() {
 
@@ -43,8 +43,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
-	//Initialize Texture from Surface
-	ballTex = TextureManager::LoadTexture("res/PixelArt.png",renderer);
+	ball = new GameObject("res/ball.png", renderer, 300, 400);
 
 }
 
@@ -73,9 +72,9 @@ void Game::handleEvents() {
 //Where game objects positions are updated
 void Game::update() {
 	cnt++;
-	destR.h = 32;
-	destR.w = 32;
-	destR.x = cnt;
+
+	ball->update();
+
 	LOG(cnt);
 }
 
@@ -85,8 +84,7 @@ void Game::render() {
 	SDL_RenderClear(renderer);
 
 	/*--Add Textures to be rendered here--*/
-	SDL_RenderCopy(renderer, ballTex, NULL , &destR);
-
+	ball->render();
 
 	/*--------------------------------*/
 	SDL_RenderPresent(renderer);
