@@ -1,4 +1,5 @@
 #include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Game.h>
+#include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\TextureManager.h>
 
 SDL_Texture* ballTex;
 SDL_Rect srcR, destR;
@@ -43,9 +44,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 	//Initialize Texture from Surface
-	SDL_Surface* tmpSurface = IMG_Load("res/PixelArt.png");
-	ballTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-	SDL_FreeSurface(tmpSurface);
+	ballTex = TextureManager::LoadTexture("res/PixelArt.png",renderer);
 
 }
 
