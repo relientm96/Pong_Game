@@ -3,14 +3,15 @@
 #include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\GameObject.h"
 #include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Ball.h"
 
-GameObject* ball;
+/*Object Initializations*/
+Ball* ball;
 
 Game::Game() {
-
+	LOG("Game Created...");
 }
 
 Game::~Game() {
-
+	LOG("Game Destroyed...");
 }
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {

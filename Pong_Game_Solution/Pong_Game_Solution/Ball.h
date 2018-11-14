@@ -7,10 +7,10 @@
 
 //A Ball is a type of Game Object
 class Ball : public GameObject {
+
 public:
 	Ball(const char* texturesheet, SDL_Renderer* ren, int x, int y); //Constructor
-	void update(); //Update Function 
-
+	void update();
 private:
 
 };
