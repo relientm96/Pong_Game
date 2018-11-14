@@ -10,6 +10,8 @@ GameObject::GameObject(const char* texturesheet, SDL_Renderer* ren,  int x, int 
 
 void GameObject::update() {
 
+
+	/*
 	if( (xpos > 800) || (xpos <0) ) {
 		xspeed*=-1;
 	}
@@ -24,9 +26,11 @@ void GameObject::update() {
 	destRect.y = ypos;
 	destRect.w = 64;
 	destRect.h = 64;
-
+	*/
 }
 
 void GameObject::render() {
 	SDL_RenderCopy(renderer, objTexture, NULL, &destRect);
 }
+
+

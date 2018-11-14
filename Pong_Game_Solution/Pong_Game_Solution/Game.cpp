@@ -1,6 +1,7 @@
 #include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Game.h>
 #include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\TextureManager.h>
 #include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\GameObject.h"
+#include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Ball.h"
 
 GameObject* ball;
 
@@ -44,7 +45,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 	//Creating objects here
-	ball = new GameObject("res/ball.png", renderer, 300, 400);
+	ball = new Ball("res/ball.png", renderer, 300, 400);
 
 }
 
