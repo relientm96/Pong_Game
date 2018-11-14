@@ -4,7 +4,7 @@
 
 class GameObject{
 
-private:
+protected:
 
 	int xpos;
 	int ypos;
@@ -21,6 +21,11 @@ public:
 
 	void update();
 	void render();
+
+	int getxpos() { return xpos; }
+	int getypos() { return ypos; }
+	int getxspeed() { return xspeed; }
+	int getyspeed() { return yspeed; }
 
 
 };

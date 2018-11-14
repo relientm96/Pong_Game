@@ -1,15 +1,17 @@
 #include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Game.h>
 #include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\TextureManager.h>
 #include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\GameObject.h"
+#include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Ball.h"
 
-GameObject* ball;
+/*Object Initializations*/
+Ball* ball;
 
 Game::Game() {
-
+	LOG("Game Created...");
 }
 
 Game::~Game() {
-
+	LOG("Game Destroyed...");
 }
 
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen) {
@@ -22,7 +24,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		flags = SDL_WINDOW_FULLSCREEN;
 	}
 
-	//Initialize Window 
+	//Initialize SDL Window and Renderer
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
 		//Window has been succesfully initialized here...
 		std::cout << "Subsystems Initialized!..." << std::endl;
@@ -43,7 +45,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = true;
 	}
 
-	ball = new GameObject("res/ball.png", renderer, 300, 400);
+	//Creating objects here
+	ball = new Ball("res/ball.png", renderer, 300, 400);
 
 }
 
@@ -69,24 +72,30 @@ void Game::handleEvents() {
 
 }
 
-//Where game objects positions are updated
+//Update objects in game every tick
 void Game::update() {
+	//Counter storing current number of ticks in game
 	cnt++;
-
+	/*---------Update Objects---------*/
 	ball->update();
 
-	LOG(cnt);
+	/*--------------------------------*/
+	//Display Ticks
+	LOG(cnt); 
 }
 
 //Add Stuff to render here
 void Game::render() {
 
+	//Clear Current Screen
 	SDL_RenderClear(renderer);
 
-	/*--Add Textures to be rendered here--*/
+	/*----------Render Objects------------*/
 	ball->render();
 
-	/*--------------------------------*/
+	/*------------------------------------*/
+
+	//Re-Render the screen 
 	SDL_RenderPresent(renderer);
 
 }
@@ -97,7 +106,8 @@ void Game::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
-	std::cout << "Game Cleaned..." << std::endl;
+	LOG("Game Cleaned...");
+
 }
 
 
