@@ -50,7 +50,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 	/*--------Creating objects here--------------*/
-	ball = new Ball("res/ball.png", renderer, 300, 400);
+	ball = new Ball("res/ball.png", renderer, 400, 300);
 	player = new Player("res/Bar.png", renderer, -43 , 200);
 	enemy = new Enemy("res/Bar.png", renderer, 735, 200);
 	/*-------------------------------------------*/

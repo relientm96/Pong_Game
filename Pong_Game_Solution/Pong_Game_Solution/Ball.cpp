@@ -10,16 +10,17 @@ Ball::Ball(const char* texturesheet, SDL_Renderer* ren, int x, int y):
 //Own Update Function
 void Ball::update() {
 
-	if ((xpos > 700) || (xpos < 0)) {
+	//Boundary Checking for ball movement
+	if ((xpos + destRect.w > 800)  || (xpos < 0)) {
 		xspeed *= -1;
 	}
-	if ((ypos > 550) || (ypos < 0)) {
+	if ((ypos + destRect.h) > 600 || (ypos < 0) ) {
 		yspeed *= -1;
 	}
 
+	//Update Ball Positions
 	xpos += xspeed;
 	ypos += yspeed;
-
 	destRect.x = xpos;
 	destRect.y = ypos;
 
@@ -27,7 +28,7 @@ void Ball::update() {
 
 //Reset Position
 void Ball::reset() {
-	xpos = 300;
-	ypos = 400;
+	xpos = 400;
+	ypos = 300;
 }
 

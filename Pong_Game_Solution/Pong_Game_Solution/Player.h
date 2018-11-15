@@ -12,8 +12,15 @@ constexpr auto DOWN = 2;
 class Player: public GameObject{
 public:
 	Player(const char* texturesheet, SDL_Renderer* ren, int x, int y); //Constructor
+	unsigned char direction; //Direction Flag
+	
 	void update();
-	unsigned char direction;
+	int getCollisionX() { return collision_x; }
+	int getCollisionY() { return collision_y; }
+
+private:
+	int collision_x; 
+	int collision_y;
 };
 
 #endif //PLAYER

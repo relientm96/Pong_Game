@@ -15,7 +15,7 @@ Enemy::Enemy(const char* texturesheet, SDL_Renderer* ren, int x, int y):
 void Enemy::update() {
 
 	//Guards to control boundaries
-	if ((ypos > 450) || (ypos < 0)) {
+	if ((ypos + destRect.h > 600) || (ypos < 0)) {
 		yspeed *= -1;
 	}
 

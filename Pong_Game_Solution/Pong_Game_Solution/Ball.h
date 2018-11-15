@@ -12,8 +12,11 @@ public:
 	Ball(const char* texturesheet, SDL_Renderer* ren, int x, int y); //Constructor
 	void update();
 	void reset();
+	int getCollisionBallX() { return collisionBall_x; }
+	int getCollisionBallY() { return collisionBall_y; }
 private:
-
+	int collisionBall_x;
+	int collisionBall_y;
 };
 
 
