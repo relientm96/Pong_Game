@@ -100,9 +100,9 @@ void Game::update() {
 	cnt++;
 
 	/*---------Update Objects---------*/
+	player->update(ball->getBallX(), ball->getBallY()+(ball->getBallDestRectH())/2 , &(ball->directionFlag));
+	enemy->update(ball->getBallX() + ball->getBallDestRectW(), ball->getBallY()+(ball->getBallDestRectH())/2, &(ball->directionFlag));
 	ball->update();
-	player->update();
-	enemy->update();
 	/*--------------------------------*/
 
 	//Display Ticks

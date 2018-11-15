@@ -14,9 +14,8 @@ public:
 	Player(const char* texturesheet, SDL_Renderer* ren, int x, int y); //Constructor
 	unsigned char direction; //Direction Flag
 	
-	void update();
-	int getCollisionX() { return collision_x; }
-	int getCollisionY() { return collision_y; }
+	void update(int ball_x, int ball_y, int* ball_Flag);
+	bool inPadYRange(int ball_y);
 
 private:
 	int collision_x; 

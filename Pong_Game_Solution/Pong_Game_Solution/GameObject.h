@@ -8,10 +8,10 @@ class GameObject{
 
 protected:
 
-	int xpos;
-	int ypos;
-	int xspeed = 1;
-	int yspeed = 1;
+	float xpos;
+	float ypos;
+	float xspeed = 1;
+	float yspeed = 1;
 
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
@@ -24,10 +24,10 @@ public:
 	void update();
 	void render();
 
-	int getxpos() { return xpos; }
-	int getypos() { return ypos; }
-	int getxspeed() { return xspeed; }
-	int getyspeed() { return yspeed; }
+	float getxpos() { return xpos; }
+	float getypos() { return ypos; }
+	float getxspeed() { return xspeed; }
+	float getyspeed() { return yspeed; }
 
 
 };

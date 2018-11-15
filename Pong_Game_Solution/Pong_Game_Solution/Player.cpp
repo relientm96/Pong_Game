@@ -14,11 +14,11 @@ Player::Player(const char* texturesheet, SDL_Renderer* ren, int x, int y):
 	direction = 0;
 }
 
-void Player::update() {
+void Player::update(int ball_x, int ball_y, int* ball_Flag) {
 
 	//Set Collision Coordinates as: 
 	// x = (Right of Pad)
-	collision_x = xpos + destRect.w;
+	collision_x = xpos + destRect.w - 15;
 	// y = (Middle of Pad)
 	collision_y = ypos + (destRect.h)/2;
 
@@ -30,16 +30,22 @@ void Player::update() {
 	if (direction == DOWN) {
 		ypos++;
 	}
+	//Change Direction of ball when hits pad's surface
+	if ( (ball_x == collision_x) && (inPadYRange(ball_y)) ) {
+		*ball_Flag = 1;
+		//std::cout << "Ball Direction Changed!..." << std::endl;
+	}
 
 	//Guards to control boundaries
 	if (ypos + destRect.h > 600) ypos = 600 - destRect.h;
 	if (ypos < 0) ypos = 0;
 
 	//Set as new rendering position
-	destRect.y = ypos;
+	destRect.y = ypos;	
 
-	//Log Position
-	std::cout << "Player: x = " << destRect.x << " ,y = " << destRect.y << std::endl;
+}
 
-
+bool Player::inPadYRange(int ball_y) {
+	if ((ball_y > ypos) && (ball_y < ypos + destRect.h)) return true;
+	else return false;
 }
