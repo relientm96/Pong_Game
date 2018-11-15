@@ -1,16 +1,19 @@
 #include "Ball.h"
 
+//Constructor for Ball Object
 Ball::Ball(const char* texturesheet, SDL_Renderer* ren, int x, int y):
 	GameObject(texturesheet, ren, x, y){
+	destRect.w = 64;
+	destRect.h = 64;
 }
 
 //Own Update Function
 void Ball::update() {
 
-	if ((xpos > 800) || (xpos < 0)) {
+	if ((xpos > 700) || (xpos < 0)) {
 		xspeed *= -1;
 	}
-	if ((ypos > 600) || (ypos < 0)) {
+	if ((ypos > 550) || (ypos < 0)) {
 		yspeed *= -1;
 	}
 
@@ -19,8 +22,7 @@ void Ball::update() {
 
 	destRect.x = xpos;
 	destRect.y = ypos;
-	destRect.w = 64;
-	destRect.h = 64;
+
 }
 
 

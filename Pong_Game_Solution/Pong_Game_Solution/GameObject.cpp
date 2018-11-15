@@ -1,5 +1,5 @@
-#include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\GameObject.h"
-#include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\TextureManager.h>
+#include "GameObject.h"
+#include "TextureManager.h"
 
 GameObject::GameObject(const char* texturesheet, SDL_Renderer* ren,  int x, int y){
 	renderer = ren;
@@ -8,27 +8,12 @@ GameObject::GameObject(const char* texturesheet, SDL_Renderer* ren,  int x, int 
 	ypos = y;
 }
 
+//Overriden by Specific Game Objects
 void GameObject::update() {
 
-
-	/*
-	if( (xpos > 800) || (xpos <0) ) {
-		xspeed*=-1;
-	}
-	if( (ypos > 600) || (ypos < 0) ){
-		yspeed*=-1;
-	}
-
-	xpos += xspeed;
-	ypos += yspeed;
-
-	destRect.x = xpos;
-	destRect.y = ypos;
-	destRect.w = 64;
-	destRect.h = 64;
-	*/
 }
 
+//Render is the same for all game objects
 void GameObject::render() {
 	SDL_RenderCopy(renderer, objTexture, NULL, &destRect);
 }

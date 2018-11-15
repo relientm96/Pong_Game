@@ -1,6 +1,8 @@
 #pragma once
 
-#include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Game.h"
+#include <iostream>
+#include "SDL.h"
+#include "SDL_image.h"
 
 class GameObject{
 

@@ -1,10 +1,13 @@
-#include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Game.h>
-#include <C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\TextureManager.h>
-#include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\GameObject.h"
-#include "C:\DOCUMENTS\C++_Projects\Pong_Game\Pong_Game_Solution\Pong_Game_Solution\Ball.h"
+#include "Game.h"
+#include "Ball.h"
+#include "Player.h"
+#include "Enemy.h"
 
 /*Object Initializations*/
 Ball* ball;
+Player* player;
+Enemy* enemy;
+/*---------------------*/
 
 Game::Game() {
 	LOG("Game Created...");
@@ -39,14 +42,18 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		if (renderer) {
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+			SDL_SetRenderDrawColor(renderer, 128, 0, 182, 5);
 			std::cout << "Renderer Created!..." << std::endl;
 		}
+
 		isRunning = true;
 	}
 
-	//Creating objects here
+	/*--------Creating objects here--------------*/
 	ball = new Ball("res/ball.png", renderer, 300, 400);
+	player = new Player("res/Bar.png", renderer, -43 , 200);
+	enemy = new Enemy("res/Bar.png", renderer, 735, 200);
+	/*-------------------------------------------*/
 
 }
 
@@ -58,30 +65,48 @@ void Game::handleEvents() {
 	//Continuously Poll Events in Game
 	SDL_PollEvent(&event);
 
-	//Handle Different Events
+	//Handle Different Event Types 
 	switch (event.type){
 
 	//Quit Event, close game by changing flag
 	case SDL_QUIT:
 		isRunning = false;
 		break;
-
+	
+	//Handle Up and Down Movement of Player Pad
+	case SDL_KEYDOWN:
+		/* Check the SDLKey values and change player's direction flag */
+		switch (event.key.keysym.sym) {
+			case SDLK_UP:
+				player->direction = 1;
+				break;
+			case SDLK_DOWN:
+				player->direction = 2;
+				break;
+			default:
+				break;
+		}
 	default:
 		break;
 	}
+
 
 }
 
 //Update objects in game every tick
 void Game::update() {
+
 	//Counter storing current number of ticks in game
 	cnt++;
+
 	/*---------Update Objects---------*/
 	ball->update();
-
+	player->update();
+	enemy->update();
 	/*--------------------------------*/
+
 	//Display Ticks
-	LOG(cnt); 
+	//LOG(cnt); 
 }
 
 //Add Stuff to render here
@@ -91,8 +116,10 @@ void Game::render() {
 	SDL_RenderClear(renderer);
 
 	/*----------Render Objects------------*/
+	player->render();
+	enemy->render();
+	//Render Ball Last as it goes on top of the pad
 	ball->render();
-
 	/*------------------------------------*/
 
 	//Re-Render the screen 

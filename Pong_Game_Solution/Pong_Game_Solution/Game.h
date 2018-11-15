@@ -2,11 +2,17 @@
 
 #define GAME
 
+/*Standard Libraries and SDL Libraries*/
 #include <iostream>
 #include <stdio.h>
 #include "SDL.h"
 #include "SDL_image.h"
 
+/*Externally Defined Header Files*/
+#include "TextureManager.h"
+#include "GameObject.h"
+
+/*Macros*/
 #define LOG(message) std::cout << message << std::endl;
 
 class Game {
