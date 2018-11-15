@@ -11,6 +11,7 @@ class Ball : public GameObject {
 public:
 	Ball(const char* texturesheet, SDL_Renderer* ren, int x, int y); //Constructor
 	void update();
+	void reset();
 private:
 
 };

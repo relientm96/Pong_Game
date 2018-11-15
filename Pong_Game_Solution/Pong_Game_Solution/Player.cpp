@@ -31,4 +31,8 @@ void Player::update() {
 	//Set as new rendering position
 	destRect.y = ypos;
 
+	//Log Position
+	std::cout << "Player: x = " << destRect.x << " ,y = " << destRect.y << std::endl;
+
+
 }

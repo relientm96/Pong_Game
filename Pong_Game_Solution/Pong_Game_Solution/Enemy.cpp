@@ -3,7 +3,7 @@
 Enemy::Enemy(const char* texturesheet, SDL_Renderer* ren, int x, int y):
 	GameObject(texturesheet,ren,x,y){
 
-	//Initial Enemy Coordinates and Size
+	//Initial Enemy Coordinates, Speed and Size
 	destRect.x = xpos;
 	destRect.y = ypos;
 	destRect.w = 64;
@@ -24,5 +24,5 @@ void Enemy::update() {
 	destRect.y = ypos;
 
 	//Log out Current Position
-	std::cout << "y = " << destRect.y << std::endl;
+	std::cout << "Enemy: x = " << destRect.x << ", y = " << destRect.y << std::endl;
 }

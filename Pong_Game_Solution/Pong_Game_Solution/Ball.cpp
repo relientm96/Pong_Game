@@ -25,4 +25,9 @@ void Ball::update() {
 
 }
 
+//Reset Position
+void Ball::reset() {
+	xpos = 300;
+	ypos = 400;
+}
 
