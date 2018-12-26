@@ -1,2 +1,2 @@
 # Pong_Game
-Simple Pong Game using SDL Libraries in C++
+Simple Pong Game using SDL Libraries in C++ (STILL IN DEVELOPMENT)
